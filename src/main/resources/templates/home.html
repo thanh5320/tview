@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        .header{
+            background-image: url('https://ezcloud.vn/wp-content/uploads/2019/07/1533966485504_8785368-1.jpg');
+            width: 100%; 
+            height: 500px; 
+            background-size: 100% 100%;
+        }
+
+        .header-logo{
+            color: white;
+            padding: 20px;
+            margin-left: 50px;
+        }
+
+        .btn{
+            border: none;
+            outline: none;
+        }
+
+        .header-a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            margin-left: 20px;
+            padding-top: 18px;
+
+        }
+
+        .header-p{
+            color: white;
+            font-size: 20px;
+            padding: 9px;
+            
+        }
+
+        .main-title{
+            color: rgb(45, 101, 185);
+            margin: 50px;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .main{
+            background-color: rgb(230, 238, 240);
+            margin: 20px;
+            border-radius: 10px;
+            margin-top: 100px;
+            padding: 50px;
+        }
+
+        .card{
+            border-radius: 5px;
+            height: 350px;
+            width: 250px; margin-right: 50px;
+        }
+
+        .card-p{
+            font-size: 15px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <br>
+        <div style="display: flex;">
+            <div>
+                <h3 class="header-logo">TVIEW</h3>
+            </div>
+            <div class="header-a">
+                <a href="/hotel" class="header-a" style="text-decoration:none">Khách sạn</a>
+            </div>
+            <div class="header-a">
+                <a href="/tour" class="header-a" style="text-decoration:none">Tour du lịch</a>
+            </div>
+            <div class="header-a">
+                <a href="#" class="header-a" style="text-decoration:none; margin-left: 250px;">hợp tác cùng chúng tôi</a>
+            </div>
+            <div class="header-p">
+                <p class="header-p">0967648120</p>
+            </div>
+            <div >
+                <a href=""><i class="fa fa-bell" aria-hidden="true" style="color: white; font-size: 20px; padding: 10px; padding-top:25px;"></i></a>
+            </div>
+            <div style="padding: 20px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF9euRlTk0WqLnPH_yl_3_jyxf379PvEpJ_Q&usqp=CAU" alt="" width="30px; height: 30px;">
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="main">
+        <h1 class="main-title">Khách sạn giá tốt chỉ có trên Tview</h1>
+        <a href="" style="text-decoration: none;">&lt&lt Xem tất cả &gt&gt</a>
+        <div  th:each="hotel : ${hotels}">
+            <div class="card">
+                <img th:attr="src=${hotel.getAvatar()}" alt="anh" width="250px" height="200px">
+                <p class="card-p" style="margin-top: 20px;"><b th:text="${hotel.getName()}">Tên khách sạn</b></p>
+                <p th:text="${hotel.getCity().getName()}" class="card-p">city</p>
+                <p th:text="${hotel.getStar()}" class="card-p">sao</p>
+                <p th:text="${hotel.getCost()}" class="card-p" style="color: hotpink;">10000000</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <h1 class="main-title">Tour du lịch giá tốt chỉ có trên Tview</h1>
+        <a href="" style="text-decoration: none;">&lt&lt Xem tất cả &gt&gt</a>
+        <p>Đang phát triển</p>
+    </div>
+
+
+
+</body>
+</html>

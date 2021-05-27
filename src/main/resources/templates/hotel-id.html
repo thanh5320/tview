@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/footer/bootstrap.min.css">
+    <link rel="stylesheet" href="css/footer/style-fonts.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/footer/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+    <title></title>
+    <style>
+        .header{
+            width: 80%;
+            height: 100px;
+            text-align: center;
+        }
+
+        .header-logo{
+            padding: 20px;
+            margin-left: 50px;
+            color: rgb(39, 186, 223);
+        }
+
+        .btn{
+            border: none;
+            outline: none;
+            background-color: rgb(199, 102, 186);
+            color: white;
+        }
+
+        .header-a {
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 20px;
+            padding-top: 18px;
+            color: #000;
+
+        }
+
+        .header-p{
+            font-size: 20px;
+            padding: 9px;
+
+        }
+
+        /*main*/
+        .main1{
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 50px;
+
+        }
+
+        .room{
+            background-color: rgb(179, 196, 206);
+            width: 95%;
+            margin-left: 2.5%;
+            border-radius: 15px;
+            margin-top: 50px;
+            padding-bottom: 20px;
+        }
+
+        .card-room{
+            display: flex;
+            background-color: white;
+            width: 95%;
+            margin-left: 2.5%;
+            margin-top: 20px;
+            border-radius: 15px;
+            
+        }
+        .card-room-left{
+            display: flex;
+            width: 60%;
+            border-right: solid 1px;
+        }
+        .card-room-main{
+            width: 15%;
+            border-right: solid 1px;
+        }
+        .card-room-right{
+            width: 25%;
+        }
+
+        .evaluate{
+            margin-top: 50px;
+        }
+
+        .cmt{
+            display: flex;
+            margin: 50px;
+            background-color: rgb(209, 228, 226);
+            border-radius: 15px;
+        }
+
+        .evaluate{
+            width: 95%;
+            margin-left: 2.5%;
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+    <div class="header">
+        <br>
+        <div style="display: flex;">
+            <div>
+                <h3 class="header-logo">TVIEW</h3>
+            </div>
+            <div class="header-a">
+                <a href="/hotel" class="header-a" style="text-decoration:none"><b>Khách sạn</b></a>
+            </div>
+            <div class="header-a">
+                <a href="/tour" class="header-a" style="text-decoration:none"><b>Tour du lịch</b></a>
+            </div>
+            <div class="header-a">
+                <a href="#" class="header-a" style="text-decoration:none; margin-left: 250px;">hợp tác cùng chúng tôi</a>
+            </div>
+            <div class="header-p">
+                <p class="header-p">0967648120</p>
+            </div>
+            <div >
+                <a href=""><i class="fa fa-bell" aria-hidden="true" style="font-size: 20px; padding: 10px; padding-top:25px; color: #000;"></i></a>
+            </div>
+            <div style="padding: 20px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF9euRlTk0WqLnPH_yl_3_jyxf379PvEpJ_Q&usqp=CAU" alt="" width="30px; height: 30px;">
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+    </center>
+
+    <div class="main1">
+        <h2 th:text="${hotel.getName()}">Khách Sạn Super Candle Hà Nội</h2>
+        <div style="display: flex">
+            <div style="width: 80%">
+                <div><p th:text="${hotel.getStar()}">5 Sao</p></div>
+                <div><span th:text="${rank}">8.0</span><span> Rất tốt(</span><span th:text="${evas.size()}">200 </span><span> đánh giá) </span><a href="#evaluate" style=" text-decoration: none;">Xem đánh giá</a></div>
+            </div>
+            <div style="width: 10%; font-size: 20px;"><span th:text="${hotel.getCost()}">1000</span><span>Đ/Đêm</span></div>
+            <div style="width: 10%"><button class="btn"><a href="#room" style="color: white;  text-decoration: none;">Chọn phòng</a></button></div>
+        </div>
+
+        <div style="display: flex">
+            <div style="width: 50%; padding: 2px; height: 300px;">
+                <img th:attr="src=${hotel.getAvatar()}" src="C:\Users\NGUYEN VAN THANH\Desktop\THANH\tview\tview\src\main\resources\static\images\hotel\1.jpg" alt="ảnh" height="100%" width="100%">
+            </div>
+            <div style="width: 50%; padding: 2px; height: 300px;">
+                <div style="display: flex">
+                    <div style="width: 50%; padding: 2px; height: 150px;">
+                        <img th:attr="src=${hotel.getImg1()}" alt=""  height="100%" width="100%" src="C:\Users\NGUYEN VAN THANH\Desktop\THANH\tview\tview\src\main\resources\static\images\hotel\1.jpg">
+                    </div>
+                    <div style="width: 50%; padding: 2px; height: 150px;">
+                        <img th:attr="src=${hotel.getImg2()}" alt=""  height="100%" width="100%" src="C:\Users\NGUYEN VAN THANH\Desktop\THANH\tview\tview\src\main\resources\static\images\hotel\1.jpg">
+                    </div>
+                </div>
+
+                <div style="display: flex">
+                    <div style="width: 50%; padding: 2px; height: 150px;">
+                        <img th:attr="src=${hotel.getImg3()}" alt=""  height="100%" width="100%" src="C:\Users\NGUYEN VAN THANH\Desktop\THANH\tview\tview\src\main\resources\static\images\hotel\1.jpg">
+                    </div>
+                    <div style="width: 50%; padding: 2px; height: 150px; ">
+                        <img th:attr="src=${hotel.getImg4()}" alt=""  height="100%" width="100%" src="C:\Users\NGUYEN VAN THANH\Desktop\THANH\tview\tview\src\main\resources\static\images\hotel\1.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="display: flex">
+            <div style="width: 50%;">
+                <div style="display: flex">
+                    <div style="width: 80%;">
+                        <h3 >Tiện nghi khách sạn</h3>
+                    </div>
+                    <div style="float: right;"><a href="">Xem tất cả</a></div>
+                </div>
+                <div style="display: flex">
+                    <div style="width: 33%;">
+                        <span>Wifi: </span><span>Có</span>
+                    </div>
+                    <div style="width: 33%;">
+                        <span>Restaurant: </span><span>Có</span>
+                    </div>
+                    <div style="width: 33%;">
+                        <span>Pool: </span><span>Có</span>
+                    </div>
+                </div>
+                <div style="display: flex">
+                    <div style="width: 33%;">
+                        <span>Gym: </span><span>Có</span>
+                    </div>
+                    <div style="width: 33%;">
+                        <span>Elevator: </span><span>Có</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 50%;">
+                <div style="display: flex">
+                    <div style="width: 60%;">
+                        <h3>Đánh giá</h3>
+                    </div>
+                    <div style="float: right;"><a href="">Xem tất cả đánh giá</a></div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="room" id="room">
+        <h3 style="margin-left: 40px;">Chọn phòng</h3>
+        <div th:each="room : ${rooms}">
+            <div class="card-room">
+                <div class="card-room-left">
+                    <div>
+                        <div style="width: 300px; height: 210px;  padding: 2px;">
+                            <img th:attr="src=${room.getImg1()}" alt="" height="100%" width="100%" src="C:\Users\NGUYEN VAN THANH\Desktop\THANH\tview\tview\src\main\resources\static\images\hotel\1.jpg">
+                        </div>
+                        <div style="display: flex;">
+                            <div style="width: 100px; height: 70px;  padding: 2px;">
+                                <img th:attr="src=${room.getImg2()}" alt="" height="100%" width="100%" src="C:\Users\NGUYEN VAN THANH\Desktop\THANH\tview\tview\src\main\resources\static\images\hotel\1.jpg">
+                            </div>
+                            <div style="width: 100px; height: 70px;  padding: 2px;">
+                                <img th:attr="src=${room.getImg3()}" alt="" height="100%" width="100%" src="C:\Users\NGUYEN VAN THANH\Desktop\THANH\tview\tview\src\main\resources\static\images\hotel\1.jpg">
+                            </div>
+                            <div style="width: 100px; height: 70px;  padding: 2px;">
+                                <img th:attr="src=${room.getImg4()}" alt="" height="100%" width="100%" src="C:\Users\NGUYEN VAN THANH\Desktop\THANH\tview\tview\src\main\resources\static\images\hotel\1.jpg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="padding-left: 30px; padding-top: 20px;">
+                        <h4 th:text="${room.getName()}">tên phòng</h4>
+                        <p th:text="${room.getDescription()}">mô tả</p>
+                    </div>
+                </div>
+
+                <div class="card-room-main" style="padding-left: 30px; padding-top: 20px;">
+                    <p><span th:text="${room.getMountOfPeople()}">2</span><span> người</span></p>
+                </div>
+
+                <div class="card-room-right" style="padding-left: 30px; padding-top: 20px;">
+                    <span th:text="${room.getCost()}">1000</span><span>Đ/Đêm</span>
+                    <button class="btn"><a href="" style="color: white; text-decoration: none;">Đặt phòng</a></button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--đánh giá-->
+    <div class="evaluate" id="evaluate">
+        <div class="">
+            <span><b style="font-size: 30px;">Đánh giá</b><span style="color: rgb(34, 127, 189); font-size: 20px;"> 100% đánh giá từ khách hàng đặt phòng trên Tview</span></span>
+        </div>
+
+        <div style="display: flex;">
+            <div style="width: 30%;">
+                <center style="font-size: 30px; color: rgb(37, 126, 209); margin-top: 10%;"><span th:text="${rank}" >1</span><span> Sao</span></center>
+                
+            </div>
+            <div style="font-size: 20px; width: 30%;">
+                <p>Tuyệt vời:</p>
+                <p>Xuất sắc:</p>
+                <p>Tốt:</p>
+                <p>Trung bình:</p>
+                <p>Kém:</p>
+            </div>
+            <div style="font-size: 20px; width: 20%;">
+                <p th:text="${fs2}">1</p>
+                <p th:text="${fs1}">2</p>
+                <p th:text="${ts2}">3</p>
+                <p th:text="${ts1}">4</p>
+                <p th:text="${os}">5</p>
+            </div>
+            <div style="font-size: 20px;">
+                <p>Đánh giá</p>
+                <p>Đánh giá</p>
+                <p>Đánh giá</p>
+                <p>Đánh giá</p>
+                <p>Đánh giá</p>
+            </div>
+        </div>
+
+        <p style="font-size: 30px;">Bình luận</p>
+        <div th:each="eva : ${evas}" class="cmt">
+            <div style="width: 10%">
+                <img th:attr="src=${eva.getUser().getImg()}" alt="" width="100px" height="100px" src="C:\Users\NGUYEN VAN THANH\Downloads\anh_20183632.jpg" style="border-top-right-radius: 50%;
+               border-top-left-radius: 50%; border-bottom-left-radius: 50%;  border-bottom-right-radius: 50%; margin: 5%;">
+            </div>
+            <div style="width: 20%; font-size: 20px;">
+                <p style="margin-top: 10px;"><b th:text="${eva.getUser().getName()}" >Nguyễn Văn Thanh</b></p>
+                <p th:text="${eva.getDate()}">1/1/2021</p>
+            </div>
+            <div style="width: 60%; font-size: 20px; margin-top: 10px;">
+                <p><b th:text="${eva.getTitle()}">Tuyệt vời</b></p>
+                <p th:text="${eva.getComment()}">Phòng ok</p>
+            </div>
+            <div style="width: 10%; margin-top: 20px; font-size: 20px;">
+                <p th:text="${eva.getStar()}">5 sao</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-59391" style="background-color: rgb(132, 230, 243); margin-left: 3%; margin-right: 3%;">
+      
+        <div class="container">
+
+          
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <div class="site-logo">
+                <a href="#">TVIEW</a>
+              </div>
+            </div>
+            <div class="col-md-8 text-md-right">
+              <ul class="list-unstyled social-icons">
+                <li><a href="#" class="fb"><span class="icon-facebook"></span></a></li>
+                <li><a href="#" class="tw"><span class="icon-twitter"></span></a></li>
+                <li><a href="#" class="in"><span class="icon-instagram"></span></a></li>
+                <li><a href="#" class="be"><span class="icon-behance"></span></a></li>
+                <li><a href="#" class="dr"><span class="icon-dribbble"></span></a></li>
+                <li><a href="#" class="yt"><span class="icon-play"></span></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row mb-5">
+            <div class="col-md-6 ">
+              <ul class="nav-links list-unstyled nav-left">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Policy</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 text-md-right">
+              <ul class="nav-links list-unstyled nav-right">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Our works</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col ">
+              <div class="copyright">
+                <p><small>Copyright 2019. All Rights Reserved.</small></p>
+              </div>
+            </div>
+          </div>
+        
+      </div>
+    </footer>
+
+    <!--js footer-->
+    <script src="javascript/footer/jquery-3.3.1.min.js"></script>
+    <script src="javascript/footer/popper.min.js"></script>
+    <script src="javascript/footer/bootstrap.min.js"></script>
+</body>
+</html>

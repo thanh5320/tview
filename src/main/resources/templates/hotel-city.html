@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/footer/bootstrap.min.css">
+    <link rel="stylesheet" href="css/footer/style-fonts.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="css/footer/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+    <title></title>
+    <style>
+        .header{
+            width: 80%;
+            height: 100px;
+            text-align: center;
+        }
+
+        .header-logo{
+            padding: 20px;
+            margin-left: 50px;
+            color: rgb(39, 186, 223);
+        }
+
+        .btn{
+            border: none;
+            outline: none;
+            background-color: rgb(199, 102, 186);
+            color: white;
+        }
+
+        .header-a {
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 20px;
+            padding-top: 18px;
+            color: #000;
+
+        }
+
+        .header-p{
+            font-size: 20px;
+            padding: 9px;
+
+        }
+
+        /*main*/
+
+        .img-tron{
+          border-top-right-radius: 50%;
+          border-top-left-radius: 50%;
+          border-bottom-left-radius: 50%;
+          border-bottom-right-radius: 50%;
+        }
+
+        .main-title{
+            color: rgb(45, 101, 185);
+            margin: 50px;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .main{
+            background-color: rgb(230, 238, 240);
+            margin: 20px;
+            border-radius: 10px;
+            margin-top: 100px;
+            padding: 50px;
+        }
+
+        .card{
+            border-radius: 5px;
+            height: 350px;
+            width: 250px; margin-right: 50px;
+        }
+
+        .card-p{
+            font-size: 15px;
+            margin-left: 20px;
+        }
+
+        .a-name{
+          text-decoration: none;
+          font-size: 18px;
+          color: #000;
+        }
+
+        .input{
+          border-radius: 5px;
+          font-size: 20px;
+          width: 200px;
+          margin-left: 40px;
+        }
+
+        .btn-search{
+          border: none;
+          color: white;
+          background-color: rgb(27, 134, 177);
+          font-size: 20px;
+          border-radius: 5px;
+          padding: 5px;
+          margin-left: 200px;
+        }
+
+    </style>
+</head>
+<body>
+<center>
+    <div class="header">
+        <br>
+        <div style="display: flex;">
+            <div>
+                <h3 class="header-logo">TVIEW</h3>
+            </div>
+            <div class="header-a">
+                <a href="/hotel" class="header-a" style="text-decoration:none"><b>Khách sạn</b></a>
+            </div>
+            <div class="header-a">
+                <a href="/tour" class="header-a" style="text-decoration:none"><b>Tour du lịch</b></a>
+            </div>
+            <div class="header-a">
+                <a href="#" class="header-a" style="text-decoration:none; margin-left: 250px;">hợp tác cùng chúng tôi</a>
+            </div>
+            <div class="header-p">
+                <p class="header-p">0967648120</p>
+            </div>
+            <div >
+                <a href=""><i class="fa fa-bell" aria-hidden="true" style="font-size: 20px; padding: 10px; padding-top:25px; color: #000;"></i></a>
+            </div>
+            <div style="padding: 20px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF9euRlTk0WqLnPH_yl_3_jyxf379PvEpJ_Q&usqp=CAU" alt="" width="30px; height: 30px;">
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</center>
+
+<!--main-->
+<p style="font-size: 30px;  margin-left: 150px; color: rgb(19, 94, 206);"><b>Tìm Kiếm</b></p>
+<div style="display: flex; margin-left: 150px;">
+    <div>
+        <form action="/hotel" method="get">
+            <input class="input" type="text" placeholder="Thành phố" name="city" th:attr="value=${city}" readonly>
+            <input class="input" type="text" placeholder="Tên khách sạn" name="hotel" th:attr="value=${hotel}">
+            <input class="input" type="number" placeholder="sao" name="star" th:attr="value=${star}">
+            <input type="submit" value="tìm kiếm" class="btn-search">
+        </form>
+
+    </div>
+</div>
+
+<hr>
+
+<div>
+    <p style="font-size: 30px;  margin-left: 150px; color: rgb(19, 94, 206); margin-top: 40px;"><b> Khách sạn theo địa điểm</b></p>
+    <div style="display: flex; margin-left: 150px;">
+        <div style="width: 12.5%">
+            <a href="/hotel-city?city=Hà+Nội"><center><img class="img-tron" width="150px" height="150px" src="images/html/hanoi.jpg" alt="">
+                <p style="font-size: 20px;">Hà Nội</p></center></a>
+        </div>
+        <div style="width: 12.5%">
+            <a href="/hotel-city?city=Hồ+Chí+Minh"><center><img class="img-tron" width="150px" height="150px" src="images/html/hochiminh.jpg" alt="">
+                <p style="font-size: 20px;">Hồ Chí Minh</p></center></a>
+        </div>
+        <div style="width: 12.5%">
+            <a href="/hotel-city?city=Đà+Nẵng"><center><img class="img-tron" width="150px" height="150px" src="images/html/danang.jpg" alt="">
+                <p style="font-size: 20px;">Đà Nẵng</p></center></a>
+        </div>
+        <div style="width: 12.5%">
+            <a href="/hotel-city?city=Thừa+Thiên+Huế"><center><img class="img-tron" width="150px" height="150px" src="images/html/hue.jpg" alt="">
+                <p style="font-size: 20px;">Huế</p></center></a>
+        </div>
+        <div style="width: 12.5%">
+            <a href="/hotel-city?city=Hải+Phòng"><center><img class="img-tron" width="150px" height="150px" src="images/html/haiphong.jpg" alt="">
+                <p style="font-size: 20px;">Hải Phòng</p></center></a>
+        </div>
+        <div style="width: 12.5%">
+            <a href="/hotel-city?city=Quảng+Ninh"><center><img class="img-tron" width="150px" height="150px" src="images/html/quangninh.jpg" alt="">
+                <p style="font-size: 20px;">Quảng Ninh</p></center></a>
+        </div>
+        <div style="width: 12.5%">
+            <a href="/hotel-city?city=Khánh+Hòa"><center><img class="img-tron" width="150px" height="150px" src="images/html/khanhhoa.jpg" alt="">
+                <p style="font-size: 20px;">Khánh Hòa</p></center></a>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="main">
+    <h1 class="main-title">Khách sạn giá tốt nhất <span th:text="${city}">Hà Nội</span></h1>
+    <p><span th:text="${amount}">100</span><span> khách sạn</span></p>
+    <a href="" style="text-decoration: none;">&lt&lt Xem tất cả &gt&gt</a>
+    <div  th:each="hotel : ${hotels}">
+        <a th:href="@{/hotel-id(id=${hotel.getId()})}" style="text-decoration: none;">
+            <div class="card">
+                <img th:attr="src=${hotel.getAvatar()}" alt="anh" width="250px" height="200px">
+                <p class="card-p" style="margin-top: 20px;"><b th:text="${hotel.getName()}">Tên khách sạn</b></p>
+                <p th:text="${hotel.getCity().getName()}" class="card-p">city</p>
+                <p th:text="${hotel.getStar()}" class="card-p">sao</p>
+                <p th:text="${hotel.getCost()}" class="card-p" style="color: hotpink;">10000000</p>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div>
+    <p style="font-size: 30px;  margin-left: 150px; color: rgb(19, 94, 206);"><b>Các khách sạn hàng đầu</b></p>
+
+    <div style="display: flex; margin-top: 10px;">
+        <div style="width: 12.5%">
+
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Thừa+Thiên+Huế">Thừa Thiên - Huế</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Kiên+Giang">Kiên Giang</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Hải+Phòng">Hải Phòng</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Gia+Lai">Gia Lai</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Bình+Định">Bình Định</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=An+Giang">An Giang</a>
+        </div><div style="width: 12.5%">
+
+    </div>
+    </div>
+
+
+    <div style="display: flex; margin-top: 10px;">
+        <div style="width: 12.5%">
+
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Nghệ+An">Nghệ An</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Hưng+Yên">Hưng Yên</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Bắc+Kạn">Bắc Kạn</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Quảng+Ninh">Quảng Ninh</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Hà+Nội">Hà Nội</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Quảng+Bình">Quảng Bình</a>
+        </div><div style="width: 12.5%">
+
+    </div>
+    </div>
+
+
+    <div style="display: flex; margin-top: 10px;">
+        <div style="width: 12.5%">
+
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Quảng+Ngãi">Quảng Ngãi</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Bến+Tre">Bến Tre</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Bà+Rịa+-+Vũng+Tàu">Bà Rịa - Vũng Tàu</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Thanh+Hóa">Thanh Hóa</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Ninh+Thuận">Ninh Thuận</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Bạc+Liêu">Bạc Liêu</a>
+        </div><div style="width: 12.5%">
+
+    </div>
+    </div>
+
+    <div style="display: flex; margin-top: 10px;">
+        <div style="width: 12.5%">
+
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Cao+Bằng">Cao Bằng</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Lâm+Đồng">Lâm Đồng</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Lào+Cai">Lào Cai</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Bình+Dương">Bình Dương</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Bình+Thuận">Bình Thuận</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Bắc+Giang">Bắc Giang</a>
+        </div><div style="width: 12.5%">
+
+    </div>
+    </div>
+
+    <div style="display: flex; margin-top: 10px;">
+        <div style="width: 12.5%">
+
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Hà+Giang">Hà Giang</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Bắc+Ninh">Bắc Ninh</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Lạng+Sơn">Lạng Sơn</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Quảng+Nam">Quảng Nam</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Sơn+La">Sơn La</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Tây+Ninh">Tây Ninh</a>
+        </div><div style="width: 12.5%">
+
+    </div>
+    </div>
+
+    <div style="display: flex; margin-top: 10px;">
+        <div style="width: 12.5%">
+
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Long+An">Long An</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Đồng+Nai">Đồng Nai</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Hồ+Chí+Minh">Hồ Chí Minh</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Hải+Dương">Hải Dương</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Bình+Phước">Bình Phước</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Hà+Nam">Hà Nam</a>
+        </div><div style="width: 12.5%">
+
+    </div>
+    </div>
+
+    <div style="display: flex; margin-top: 10px;">
+        <div style="width: 12.5%">
+
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Vĩnh+Long">Vĩnh Long</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Cần+Thơ">Cần Thơ</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Vĩnh+Phúc">Vĩnh Phúc</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Đắk+Lắk">Đắk Lắk</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Cà+Mau">Cà Mau</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Tiền+Giang">Tiền Giang</a>
+        </div><div style="width: 12.5%">
+
+    </div>
+    </div>
+
+    <div style="display: flex; margin-top: 10px;">
+        <div style="width: 12.5%">
+
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Khánh+Hòa">Khánh Hòa</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Quảng+Trị">Quảng Trị</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Hà+Tĩnh">Hà Tĩnh</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Trà+Vinh">Trà Vinh</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Đồng+Tháp">Đồng Tháp</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Hòa+Bình">Hòa Bình</a>
+        </div><div style="width: 12.5%">
+
+    </div>
+    </div>
+
+    <div style="display: flex; margin-top: 10px;">
+        <div style="width: 12.5%">
+
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Phú+Thọ">Phú Thọ</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Đà+Nẵng">Đà Nẵng</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Hậu+Giang">Hậu Giang</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Sóc+Trăng">Sóc Trăng</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Tuyên+Quang">Tuyên Quang</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Đắk+Nông">Đắk Nông</a>
+        </div><div style="width: 12.5%">
+
+    </div>
+    </div>
+
+    <div style="display: flex; margin-top: 10px;">
+        <div style="width: 12.5%">
+
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Thái+Nguyên">Thái Nguyên</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Kon+Tum">Kon Tum</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Điện+Biên">Điện Biên</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Phú+Yên">Phú Yên</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Thái+Bình">Thái Bình</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Ninh+Bình">Ninh Bình</a>
+        </div><div style="width: 12.5%">
+
+    </div>
+    </div>
+
+    <div style="display: flex; margin-top: 10px;">
+        <div style="width: 12.5%">
+
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Nam+Định">Nam Định</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Lai+Châu">Lai Châu</a>
+        </div>
+        <div style="width: 12.5%">
+            <a class="a-name" style="text-decoration: none;" href="/hotel-city?city=Yên+Bái">Yên Bái</a>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br><br>
+<footer class="footer-59391" style="background-color: rgb(132, 230, 243); margin-left: 3%; margin-right: 3%;">
+
+    <div class="container">
+
+
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="site-logo">
+                    <a href="#">TVIEW</a>
+                </div>
+            </div>
+            <div class="col-md-8 text-md-right">
+                <ul class="list-unstyled social-icons">
+                    <li><a href="#" class="fb"><span class="icon-facebook"></span></a></li>
+                    <li><a href="#" class="tw"><span class="icon-twitter"></span></a></li>
+                    <li><a href="#" class="in"><span class="icon-instagram"></span></a></li>
+                    <li><a href="#" class="be"><span class="icon-behance"></span></a></li>
+                    <li><a href="#" class="dr"><span class="icon-dribbble"></span></a></li>
+                    <li><a href="#" class="yt"><span class="icon-play"></span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-md-6 ">
+                <ul class="nav-links list-unstyled nav-left">
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <ul class="nav-links list-unstyled nav-right">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Our works</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col ">
+                <div class="copyright">
+                    <p><small>Copyright 2019. All Rights Reserved.</small></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<!--js footer-->
+<script src="javascript/footer/jquery-3.3.1.min.js"></script>
+<script src="javascript/footer/popper.min.js"></script>
+<script src="javascript/footer/bootstrap.min.js"></script>
+</body>
+</html>
