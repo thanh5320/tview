@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,12 @@
     <title>Document</title>
     <style>
         .div1{
-            width:70vw; 
-            height:80vh;
+            width:80vw; 
+            height:90vh;
             background-color: white;
             margin: 10%;
             display: flex;
-            margin-left: 200px;
+            
         }
         .div-img{
             width: 50%;
@@ -67,7 +68,9 @@
     </style>
 </head>
 <body style="background-color: rgb(172, 202, 226);">
-    
+
+<h2 align="center";><span class="text-success" th:utext="${successMessage}"></span></h2>
+
         <div class="div1">
             <div class="div-img">
                 <img src="https://nhatminhdecor.com/wp-content/uploads/2018/11/la-cay-trang-tri-chup-anh-2.jpg?v=1620904108" alt="" width="100%" height="100%">
@@ -77,23 +80,30 @@
                 <center><span class="p-title">sign up with </span><span class="p-title">TVIEW</span></center>
 
                 <div style="margin-top: 100px; padding-left: 50px;">
-                    <form action="">
-                        <label for="" class="label-form">UserName:</label>
+                    <form autocomplete="off" action="#" th:action="@{/signup}"
+                          th:object="${user}" method="post"
+                          role="form" class="signup-form" onsubmit="return validate()">
+                        <label class="label-form">UserName:<span id="mess_user_err" style="color: red;"><span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" style="color: red;"></span></span></label>
                         <br>
-                        <input class="input1" type="text">
+                        
+                        
+                        <input id="userName" class="input1" type="text" th:field="*{userName}">
                         <br>
                         <br>
-                        <label for="" class="label-form">Password:</label>
+                        <label class="label-form">Password:<span id="mess_pass_err" style="color: red;"></span></label>
                         <br>
-                        <input class="input1" type="password">
+                        
+                        <input id="password" class="input1" type="password" th:field="*{password}">
                         <br><br>
-                        <label for="" class="label-form">Confirm Password:</label>
+                        <label class="label-form">Confirm Password:<span id="mess_conf_pass" style="color: red;"></span></label>
                         <br>
-                        <input class="input1" type="password">
+                        
+                        <input id="confirm_password" class="input1" type="password">
                         <br>
                         <br>
-                        <input type="radio" name="colors" id="blue" checked="true">Customer
-                        <input type="radio" name="colors" id="blue">Partner
+                        <input type="radio" name="colors" id="customer" checked="true" value="customer">Customer
+                        <input type="radio" name="colors" id='partner' value="partner">Partner
+                        <input type="text" id="type" th:field="*{type}" hidden>
                         <br>
                         <br>
                         <center><input class="btn-sub" type="submit" value="Sign Up"></center>
@@ -112,12 +122,62 @@
                     </div>
 
                     <div style="width:30%;">
-                        <a href="">Login</a>
+                        <a href="/login">Login</a>
                     </div>
                 </div>
             </div>
         </div>
-    
-    
+
+<script>
+function validate(){
+        var user_name = document.getElementById("userName").value;
+        var pass = document.getElementById("password").value;
+        var pass_conf = document.getElementById("confirm_password").value;
+        var x=0;
+
+        var customer = document.getElementById('customer');
+        var partner = document.getElementById("partner");
+        var type = document.getElementById("type");
+
+        if(partner.checked){
+            type.value=partner.value;
+            //alert(type.value);
+        }
+        else{
+            type.value=customer.value;
+            //alert(type.value);
+        }
+
+
+        if(pass!=pass_conf){
+            x=1;
+            document.getElementById("mess_conf_pass").innerHTML="confirm password not match!";
+            //alert('confirm password not match!');
+        }
+        else{
+            document.getElementById("mess_conf_pass").innerHTML="";
+        }
+        if(user_name.length<8){
+            x=1;
+            document.getElementById("mess_user_err").innerHTML="at least 8 characters!";
+            //alert("UserName at least 8 characters!");
+        }
+        else{
+            document.getElementById("mess_user_err").innerHTML="";
+        }
+        if(pass.length<8){
+            x=1;
+            document.getElementById("mess_pass_err").innerHTML="at least 8 characters!";
+            //alert("password at least 8 characters!");
+
+        }
+        else{
+            document.getElementById("mess_pass_err").innerHTML="";
+        }
+        if(x==1) return false;
+        else return true;
+    }
+
+</script>
 </body>
 </html>

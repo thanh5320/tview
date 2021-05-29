@@ -53,10 +53,6 @@
             padding: 9px;
 
         }
-
-        .p-title{
-            font-size: 20px;
-        }
  
 
     </style>
@@ -87,50 +83,41 @@
             <div style="padding: 20px;">
               <a href="/user">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF9euRlTk0WqLnPH_yl_3_jyxf379PvEpJ_Q&usqp=CAU" alt="" width="30px; height: 30px;">
-                <i class="fa fa-angle-down" aria-hidden="true"></i></a> 
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+              </a>
             </div>
         </div>
     </div>
     </center>
 
-
-    <div style="background-color: rgb(22, 135, 201); padding-left: 10%; padding-top: 10px; padding-bottom: 10px;">
-        <p style="color: white;">Trang chủ>>tài khoản>>thông báo</p>
-        <p style="color: white; font-size: 40px;"><b>Tài khoản</b></p>
+    <div style="width: 94%; margin-left: 3%;">
+        <div>
+            <p>Chi tiết đơn phòng</p>
+        </div>
+        <div>
+            <p><span>Tên khách sạn: </span><span>XXX</span></p>
+        </div>
+        <div>
+            <p><span>Địa chỉ: </span><span>AXX</span></p>
+        </div>
+        <div>
+            <p><span>Loại phòng: </span><span>AXX</span></p>
+        </div>
+        <div>
+            <p><span>Số người: </span><span>AXX</span></p>
+        </div>
+        <form action="">
+            <label for="">Ngày đến</label>
+            <input type="date">
+            <label for="">Ngày đi</label>
+        </form>
     </div>
-
-    <div style="display: flex;  padding-left: 10%; padding-top: 20px;">
-        <div style="width: 20%; ">
-            <center><a href="/user" style="text-decoration: none;"><p class="p-title">Quản lý tài khoản</p></a></center>
-        </div>
-        <div style="width: 20%; color: rgb(63, 147, 216);">
-            <center><a href="/notification" style="text-decoration: none;"><p class="p-title" style="border-bottom: solid 2px;">Thông báo</p></a></center>
-        </div>
-        <div style="width: 20%">
-            <center><a href="/cart" style="text-decoration: none;"><p class="p-title">Giỏ hàng</p></a></center>
-        </div>
-    </div>
-
-    <div  style=" margin-left:3%; background-color: rgb(241, 238, 233); width: 94%;" th:each="notification: ${notifications}">
-      <div style="display:flex;" th:attr="id=${notification.getId()}">
-        <div style="width: 70%">
-          <p style="font-size: 20px; margin: 20px; margin-left: 80px;" th:text="${notification.getContent()}">Thông báo</p>
-        </div>
-        <div style="width: 20%">
-          <p style="margin: 20px; font-size: 20px;" th:text="${notification.getDate()}">1/1/2021</p>
-        </div>
-        <div style="width: 10%;" >
-          <button th:attr="value=${notification.getId()}" onclick="delete_notification_by_id(this)" style="margin: 20px; font-size: 20px;"><i class="fa fa-trash"></i></button>
-        </div>
-      </div>
-      <hr>
-    </div>
-    
-    <br><br><br><br>
 
     <footer class="footer-59391" style="background-color: rgb(132, 230, 243); margin-left: 3%; margin-right: 3%;">
       
         <div class="container">
+
+          
           <div class="row mb-5">
             <div class="col-md-4">
               <div class="site-logo">
@@ -181,20 +168,5 @@
     <script src="javascript/footer/jquery-3.3.1.min.js"></script>
     <script src="javascript/footer/popper.min.js"></script>
     <script src="javascript/footer/bootstrap.min.js"></script>
-
-    <script>
-      function delete_notification_by_id(x){
-        var id = x.value;
-        var xhttp = new XMLHttpRequest();
-        document.getElementById(id).style.display='none';
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                
-            }
-        };
-        xhttp.open("GET","/delete-notification?id="+id, true);
-        xhttp.send();
-    }
-    </script>
 </body>
 </html>
