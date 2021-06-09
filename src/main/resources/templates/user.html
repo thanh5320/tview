@@ -93,7 +93,7 @@
         <br>
         <div style="display: flex;">
             <div>
-                <h3 class="header-logo">TVIEW</h3>
+              <a href="/home" style="text-decoration: none;"><h3 class="header-logo">TVIEW</h3></a>
             </div>
             <div class="header-a">
                 <a href="/hotel" class="header-a" style="text-decoration:none"><b>Khách sạn</b></a>
@@ -137,6 +137,9 @@
         <div style="width: 20%">
             <center><a href="/cart" style="text-decoration: none;"><p class="p-title">Giỏ hàng</p></a></center>
         </div>
+        <div style="width: 20%" th:if="${user.getType()=='partner'}">
+          <center><a href="/partner" style="text-decoration: none;"><p class="p-title">Quản lý khách sạn</p></a></center>
+      </div>
     </div>
 
     <div style="display: flex; margin-left:3%; background-color: rgb(241, 238, 233); width: 94%;">

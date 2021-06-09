@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../../css/footer/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/footer/style-fonts.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../../../css/footer/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+    <title></title>
+    <style>
+        .header{
+            width: 80%;
+            height: 100px;
+            text-align: center;
+        }
+
+        .header-logo{
+            padding: 20px;
+            margin-left: 50px;
+            color: rgb(39, 186, 223);
+        }
+
+        .btn{
+            border: none;
+            outline: none;
+            background-color: rgb(199, 102, 186);
+            color: white;
+        }
+
+        .header-a {
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 20px;
+            padding-top: 18px;
+            color: #000;
+
+        }
+
+        .header-p{
+            font-size: 20px;
+            padding: 9px;
+
+        }
+
+        .label-p{
+          font-size: 20px;
+          color: rgb(29, 96, 173);
+        }
+ 
+        .input{
+          width: 80%;
+          font-size: 20px;
+          border-radius: 5px;
+        }
+
+        textarea{
+          width: 80%;
+          border-radius: 10px;
+        }
+
+        .div-input{
+          margin-top: 50px;
+        }
+
+        hr {
+      border: none;
+      height: 2px;
+    /* Set the hr color */
+      color: #333; /* old IE */
+      background-color: #333; /* Modern Browsers */
+      }
+
+      .btn1{
+          background-color: rgb(84, 82, 199);
+          color: white;
+          border: none;
+          border-radius: 5px;
+          font-size: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+    <div class="header">
+        <br>
+        <div style="display: flex;">
+            <div>
+              <a href="/home" style="text-decoration: none;"><h3 class="header-logo">TVIEW</h3></a>
+            </div>
+            <div class="header-a">
+                <a href="/hotel" class="header-a" style="text-decoration:none"><b>Khách sạn</b></a>
+            </div>
+            <div class="header-a">
+                <a href="/tour" class="header-a" style="text-decoration:none"><b>Tour du lịch</b></a>
+            </div>
+            <div class="header-a">
+                <a href="/signup" class="header-a" style="text-decoration:none; margin-left: 250px;">hợp tác cùng chúng tôi</a>
+            </div>
+            <div class="header-p">
+                <p class="header-p">0967648120</p>
+            </div>
+            <div >
+                <a href="/notification"><i class="fa fa-bell" aria-hidden="true" style="font-size: 20px; padding: 10px; padding-top:25px; color: #000;"></i></a>
+            </div>
+            <div style="padding: 20px;">
+              <a href="/user">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF9euRlTk0WqLnPH_yl_3_jyxf379PvEpJ_Q&usqp=CAU" alt="" width="30px; height: 30px;">
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+              </a>
+            </div>
+        </div>
+    </div>
+    </center>
+
+
+    <div style="width: 94%; margin-left: 3%; background-color: rgb(224, 229, 233); padding: 40px; border-radius: 15px;">
+      <form method="post" th:object="${hotel}" th:action="@{/partner/add-hotel}" enctype="multipart/form-data">
+      <h2>Thêm mới khách sạn</h2>
+      <hr>
+        <div style="display: flex;" class="div-input">
+            <div style="width: 35%;">
+              <p class="label-p">Tên khách sạn:</p>
+            </div>
+            <div style="width: 65%;">
+              <input class="input" type="text" th:field="*{name}">
+            </div>
+        </div>
+        <div style="display: flex;" class="div-input">
+          <div style="width: 35%;">
+            <p class="label-p">Tỉnh thành:</p>
+          </div>
+          <div style="width: 65%;">
+            <select th:field="*{city}" class="input">
+              <option value="" selected></option>
+              <option value="Thừa Thiên - Huế">Thừa Thiên - Huế</option>
+              <option value="Kiên Giang">Kiên Giang</option>
+              <option value="Hải Phòng">Hải Phòng</option>
+              <option value="Gia Lai">Gia Lai</option>
+              <option value="Bình Định">Bình Định</option>
+              <option value="An Giang">An Giang</option>
+              <option value="Nghệ An">Nghệ An</option>
+              <option value="Hưng Yên">Hưng Yên</option>
+              <option value="Bắc Kạn">Bắc Kạn</option>
+              <option value="Quảng Ninh">Quảng Ninh</option>
+              <option value="Hà Nội">Hà Nội</option>
+              <option value="Quảng Bình">Quảng Bình</option>
+              <option value="Quảng Ngãi">Quảng Ngãi</option>
+              <option value="Bến Tre">Bến Tre</option>
+              <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+              <option value="Thanh Hóa">Thanh Hóa</option>
+              <option value="Ninh Thuận">Ninh Thuận</option>
+              <option value="Bạc Liêu">Bạc Liêu</option>
+              <option value="Cao Bằng">Cao Bằng</option>
+              <option value="Lâm Đồng">Lâm Đồng</option>
+              <option value="Lào Cai">Lào Cai</option>
+              <option value="Bình Dương">Bình Dương</option>
+              <option value="Bình Thuận">Bình Thuận</option>
+              <option value="Bắc Giang">Bắc Giang</option>
+              <option value="Hà Giang">Hà Giang</option>
+              <option value="Bắc Ninh">Bắc Ninh</option>
+              <option value="Lạng Sơn">Lạng Sơn</option>
+              <option value="Quảng Nam">Quảng Nam</option>
+              <option value="Sơn La">Sơn La</option>
+              <option value="Tây Ninh">Tây Ninh</option>
+              <option value="Long An">Long An</option>
+              <option value="Đồng Nai">Đồng Nai</option>
+              <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+              <option value="Hải Dương">Hải Dương</option>
+              <option value="Bình Phước">Bình Phước</option>
+              <option value="Hà Nam">Hà Nam</option>
+              <option value="Vĩnh Long">Vĩnh Long</option>
+              <option value="Cần Thơ">Cần Thơ</option>
+              <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+              <option value="Đắk Lắk">Đắk Lắk</option>
+              <option value="Cà Mau">Cà Mau</option>
+              <option value="Tiền Giang">Tiền Giang</option>
+              <option value="Khánh Hòa">Khánh Hòa</option>
+              <option value="Quảng Trị">Quảng Trị</option>
+              <option value="Hà Tĩnh">Hà Tĩnh</option>
+              <option value="Trà Vinh">Trà Vinh</option>
+              <option value="Đồng Tháp">Đồng Tháp</option>
+              <option value="Hòa Bình">Hòa Bình</option>
+              <option value="Phú Thọ">Phú Thọ</option>
+              <option value="Đà Nẵng">Đà Nẵng</option>
+              <option value="Hậu Giang">Hậu Giang</option>
+              <option value="Sóc Trăng">Sóc Trăng</option>
+              <option value="Tuyên Quang">Tuyên Quang</option>
+              <option value="Đắk Nông ">Đắk Nông</option>
+              <option value="Thái Nguyên">Thái Nguyên</option>
+              <option value="Kon Tum">Kon Tum</option>
+              <option value="Điện Biên">Điện Biên</option>
+              <option value="Phú Yên">Phú Yên</option>
+              <option value="Thái Bình">Thái Bình</option>
+              <option value="Ninh Bình">Ninh Bình</option>
+              <option value="Nam Định">Nam Định</option>
+              <option value="Lai Châu">Lai Châu</option>
+              <option value="Yên Bái">Yên Bái</option>
+            </select>
+          </div>
+      </div>
+        <div style="display: flex;" class="div-input">
+          <div style="width: 35%;">
+            <p class="label-p">Địa chỉ:</p>
+          </div>
+          <div style="width: 65%;">
+            <input class="input" type="text" th:field="*{address}">
+          </div>
+        </div>
+        <p class="label-p div-input">Dịch vụ:</p>
+        <div style="display: flex;">
+          <div style="width: 10%;">
+            <p class="label-p">Wifi</p>
+          </div>
+          <div style="width: 10%;">
+            <input type="checkbox" th:field="*{wifi}">
+          </div>
+          <div style="width: 10%;">
+            <p class="label-p">Pool</p>
+          </div>
+          <div style="width: 10%;">
+            <input type="checkbox" th:field="*{pool}">
+          </div>
+          <div style="width: 10%;">
+            <p class="label-p">Gym</p>
+          </div>
+          <div style="width: 10%;">
+            <input type="checkbox" th:field="*{gym}">
+          </div>
+          <div style="width: 10%;">
+            <p class="label-p">Elevator</p>
+          </div>
+          <div style="width: 10%;">
+            <input type="checkbox" th:field="*{elevator}">
+          </div>
+          <div style="width: 10%;">
+            <p class="label-p">Restaurant</p>
+          </div>
+          <div style="width: 10%;">
+            <input type="checkbox" checked th:field="*{restaurant}">
+          </div>
+        </div>
+
+        <div style="display: flex;" class="div-input">
+          <div style="width: 35%;">
+            <p class="label-p">Mô tả:</p>
+          </div>
+          <div style="width: 65%;">
+            <textarea class="input" th:field="*{description}" rows="10"></textarea>
+          </div>
+        </div>
+
+        <div style="display: flex;" class="div-input">
+          <div style="width: 35%;">
+            <p class="label-p">Số sao:</p>
+          </div>
+          <div style="width: 65%;">
+            <input type="number" th:field="*{star}" class="input">
+          </div>
+        </div>
+        <div style="display: flex;" class="div-input">
+          <div style="width: 35%;">
+            <p class="label-p">Ảnh 1</p>
+          </div>
+          <div>
+            <input type="file" th:field="*{avatar}">
+          </div>
+        </div>
+
+        <div style="display: flex;" class="div-input">
+          <div style="width: 35%;">
+            <p class="label-p">Ảnh 2</p>
+          </div>
+          <div>
+            <input type="file" th:field="*{img1}">
+          </div>
+        </div>
+
+        <div style="display: flex;" class="div-input">
+          <div style="width: 35%;">
+            <p class="label-p">Ảnh 3</p>
+          </div>
+          <div>
+            <input type="file" th:field="*{img2}">
+          </div>
+        </div>
+
+        <div style="display: flex;" class="div-input">
+          <div style="width: 35%;">
+            <p class="label-p">Ảnh 4</p>
+          </div>
+          <div>
+            <input type="file" th:field="*{img3}">
+          </div>
+        </div>
+
+        <div style="display: flex;" class="div-input">
+          <div style="width: 35%;">
+            <p class="label-p">Ảnh 5</p>
+          </div>
+          <div>
+            <input type="file" th:field="*{img4}">
+          </div>
+        </div>
+        <br>
+        <br>
+        <center><input type="submit" value="Thêm mới" class="btn1"></center>
+      </form>
+    </div>
+
+    <br><br><br><br>
+
+    <footer class="footer-59391" style="background-color: rgb(132, 230, 243); margin-left: 3%; margin-right: 3%;">
+      
+        <div class="container">
+
+          
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <div class="site-logo">
+                <a href="#">TVIEW</a>
+              </div>
+            </div>
+            <div class="col-md-8 text-md-right">
+              <ul class="list-unstyled social-icons">
+                <li><a href="#" class="fb"><span class="icon-facebook"></span></a></li>
+                <li><a href="#" class="tw"><span class="icon-twitter"></span></a></li>
+                <li><a href="#" class="in"><span class="icon-instagram"></span></a></li>
+                <li><a href="#" class="be"><span class="icon-behance"></span></a></li>
+                <li><a href="#" class="dr"><span class="icon-dribbble"></span></a></li>
+                <li><a href="#" class="yt"><span class="icon-play"></span></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row mb-5">
+            <div class="col-md-6 ">
+              <ul class="nav-links list-unstyled nav-left">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Policy</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 text-md-right">
+              <ul class="nav-links list-unstyled nav-right">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Our works</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col ">
+              <div class="copyright">
+                <p><small>Copyright 2019. All Rights Reserved.</small></p>
+              </div>
+            </div>
+          </div>
+        
+      </div>
+    </footer>
+    <!--js footer-->
+    <script src="../../../javascript/footer/jquery-3.3.1.min.js"></script>
+    <script src="../../../javascript/footer/popper.min.js"></script>
+    <script src="../../../javascript/footer/bootstrap.min.js"></script>
+</body>
+</html>

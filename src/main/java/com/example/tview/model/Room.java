@@ -45,6 +45,9 @@ public class Room {
     @Column(name="description")
     private String description;
 
+    @Column(name="active")
+    private boolean active;
+
     @ManyToOne
     @JoinColumn(name="hotel_id", nullable=false)
     private Hotel hotel;

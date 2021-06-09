@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification, Long> {
     List<Notification> findByUserId(Integer id);
+    Notification save(Notification notification);
 
     @Modifying
     @Transactional

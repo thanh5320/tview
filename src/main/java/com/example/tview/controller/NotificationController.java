@@ -27,7 +27,7 @@ public class NotificationController {
         User user = userService.userRepository.findUserByUserName(auth.getName());
         List<Notification> notifications = notificationService.notificationRepository.findByUserId(user.getId());
         modelAndView.addObject("notifications", notifications);
-
+        modelAndView.addObject("user", user);
         modelAndView.setViewName("notification");
         return modelAndView;
     }

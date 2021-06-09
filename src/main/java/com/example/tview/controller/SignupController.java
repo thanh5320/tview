@@ -1,6 +1,8 @@
 package com.example.tview.controller;
 
+import com.example.tview.model.Notification;
 import com.example.tview.model.User;
+import com.example.tview.service.NotificationService;
 import com.example.tview.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,8 @@ import javax.validation.Valid;
 public class SignupController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private NotificationService notificationService;
 
     @GetMapping(value="/signup")
     public ModelAndView registration(){
@@ -36,7 +40,8 @@ public class SignupController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("signup");
         } else {
-            userService.saveUser(user);
+            User user1 = userService.saveUser(user);
+            notificationService.createNotification(user, "Chào bạn! Bạn vừa đăng ký tài khoản thành công!");
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
             modelAndView.setViewName("signup");

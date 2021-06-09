@@ -43,7 +43,10 @@ public class Hotel {
     private String img4;
 
     @Column(name="approve")
-    private boolean appvore;
+    private boolean approve;
+
+    @Column(name="active")
+    private boolean active;
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
@@ -60,4 +63,8 @@ public class Hotel {
     private int star;
 
     private int cost;
+
+    public boolean getActive() {
+        return active;
+    }
 }

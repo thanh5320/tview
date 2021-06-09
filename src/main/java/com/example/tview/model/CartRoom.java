@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @Table(name="cart_room")
@@ -32,4 +32,11 @@ public class CartRoom {
 
     @Column(name="date_cart")
     private Date date;
+
+    @Column(name="completed")
+    private boolean completed;
+
+    @Column(name="eva_id")
+    private int evaId;
+
 }

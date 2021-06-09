@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @Table(name="evaluate_hotel")
@@ -38,9 +38,4 @@ public class EvaluateHotel {
 
     @ManyToOne
     @JoinColumn(name="hotel_id", nullable=false)
-    private Hotel hotel;
-
-
-
-
-}
+    private Hotel hotel;}

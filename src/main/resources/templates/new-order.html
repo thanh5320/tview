@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../css/footer/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/footer/style-fonts.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../../css/footer/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+    <title></title>
+    <style>
+        .header{
+            width: 80%;
+            height: 100px;
+            text-align: center;
+        }
+
+        .header-logo{
+            padding: 20px;
+            margin-left: 50px;
+            color: rgb(39, 186, 223);
+        }
+
+        .btn{
+            border: none;
+            outline: none;
+            background-color: rgb(199, 102, 186);
+            color: white;
+        }
+
+        .header-a {
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 20px;
+            padding-top: 18px;
+            color: #000;
+
+        }
+
+        .header-p{
+            font-size: 20px;
+            padding: 9px;
+
+        }
+
+        .p-title{
+            font-size: 20px;
+        }
+ 
+        .img-tron{
+          border-top-right-radius: 50%;
+          border-top-left-radius: 50%;
+          border-bottom-left-radius: 50%;  
+          border-bottom-right-radius: 50%;
+          margin-top: 20%;
+        }
+
+        .input{
+          width: 500px;
+          border-radius: 5px;
+          font-size: 20px;
+          background-color: rgb(189, 213, 214);
+          border: none;
+        }
+
+        .btn-update{
+          color: white;
+          background-color:rgb(52, 110, 199) ;
+          font-size: 20px;
+          padding: 3px;
+          border: none;
+          border-radius: 5px;
+          margin-left: 200px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <center>
+    <div class="header">
+        <br>
+        <div style="display: flex;">
+            <div>
+              <a href="/home" style="text-decoration: none;"><h3 class="header-logo">TVIEW</h3></a>
+            </div>
+            <div class="header-a">
+                <a href="/hotel" class="header-a" style="text-decoration:none"><b>Khách sạn</b></a>
+            </div>
+            <div class="header-a">
+                <a href="/tour" class="header-a" style="text-decoration:none"><b>Tour du lịch</b></a>
+            </div>
+            <div class="header-a">
+                <a href="/signup" class="header-a" style="text-decoration:none; margin-left: 250px;">hợp tác cùng chúng tôi</a>
+            </div>
+            <div class="header-p">
+                <p class="header-p">0967648120</p>
+            </div>
+            <div >
+                <a href="/notification"><i class="fa fa-bell" aria-hidden="true" style="font-size: 20px; padding: 10px; padding-top:25px; color: #000;"></i></a>
+            </div>
+            <div style="padding: 20px;">
+              <a href="/user">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF9euRlTk0WqLnPH_yl_3_jyxf379PvEpJ_Q&usqp=CAU" alt="" width="30px; height: 30px;">
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+              </a>
+            </div>
+        </div>
+    </div>
+    </center>
+
+    
+
+    <div style="background-color: rgb(22, 135, 201); padding-left: 10%; padding-top: 10px; padding-bottom: 10px;">
+        <p style="color: white;">Trang chủ>>Đối tác</p>
+        <p style="color: white; font-size: 40px;"><b>Đơn hàng</b></p>
+    </div>
+
+    <div style="display: flex;  padding-left: 10%; padding-top: 20px;">
+        <div style="width: 20%; color: rgb(63, 147, 216);">
+            <center><a href="/partner/order/new" style="text-decoration: none;"><p class="p-title" style="border-bottom: solid 2px;">Đơn hàng chưa hoàn thành</p></a></center>
+        </div>
+        <div style="width: 20%">
+            <center><a href="/partner/order/old" style="text-decoration: none;"><p class="p-title">Đơn hàng đã hoàn thành</p></a></center>
+        </div>
+    </div>
+
+    <div  style=" margin-left:3%;  width: 94%;" th:each="cart: ${carts}">
+        <div style="display:flex; background-color: rgb(241, 238, 233); border-bottom: solid 2px;" th:attr="id=${cart.getId()}">
+          <div style="width: 10%">
+            <p style="font-size: 20px; margin: 20px; margin-left: 80px;">KSO<span th:text="${cart.getId()}"></span></p>
+          </div>
+          <div style="width: 40%">
+            <p style="margin: 20px; font-size: 20px;">Tên khách hàng: <span th:text="${cart.getUser().getName()}"></span></p>
+          </div>
+          <div style="width: 30%">
+            <p style="margin: 20px; font-size: 20px;" th:text="${cart.getDate()}">1/1/2021</p>
+          </div>
+          <div style="width: 20%;">
+            <button th:attr="value=${cart.getId()}" onclick="complete(this)" style="margin: 20px; font-size: 20px;">Hoành thành</button>
+          </div>
+        </div>
+      </div>
+
+    <br><br><br><br>
+
+    <footer class="footer-59391" style="background-color: rgb(132, 230, 243); margin-left: 3%; margin-right: 3%;">
+      
+        <div class="container">
+
+          
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <div class="site-logo">
+                <a href="#">TVIEW</a>
+              </div>
+            </div>
+            <div class="col-md-8 text-md-right">
+              <ul class="list-unstyled social-icons">
+                <li><a href="#" class="fb"><span class="icon-facebook"></span></a></li>
+                <li><a href="#" class="tw"><span class="icon-twitter"></span></a></li>
+                <li><a href="#" class="in"><span class="icon-instagram"></span></a></li>
+                <li><a href="#" class="be"><span class="icon-behance"></span></a></li>
+                <li><a href="#" class="dr"><span class="icon-dribbble"></span></a></li>
+                <li><a href="#" class="yt"><span class="icon-play"></span></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row mb-5">
+            <div class="col-md-6 ">
+              <ul class="nav-links list-unstyled nav-left">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Policy</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 text-md-right">
+              <ul class="nav-links list-unstyled nav-right">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Our works</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col ">
+              <div class="copyright">
+                <p><small>Copyright 2019. All Rights Reserved.</small></p>
+              </div>
+            </div>
+          </div>
+        
+      </div>
+    </footer>
+
+    <!--js footer-->
+    <script src="../../javascript/footer/jquery-3.3.1.min.js"></script>
+    <script src="../../javascript/footer/popper.min.js"></script>
+    <script src="../../javascript/footer/bootstrap.min.js"></script>
+    <script>
+        function complete(x){
+          var id = x.value;
+          var xhttp = new XMLHttpRequest();
+          document.getElementById(id).style.display='none';
+          xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                  
+              }
+          };
+          xhttp.open("PUT","/completed/cart/"+id, true);
+          xhttp.send();
+      }
+      </script>
+</body>
+</html>

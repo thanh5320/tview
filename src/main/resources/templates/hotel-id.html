@@ -117,7 +117,7 @@
         <br>
         <div style="display: flex;">
             <div>
-                <h3 class="header-logo">TVIEW</h3>
+                <a href="/home" style="text-decoration: none;"><h3 class="header-logo">TVIEW</h3></a>
             </div>
             <div class="header-a">
                 <a href="/hotel" class="header-a" style="text-decoration:none"><b>Khách sạn</b></a>
@@ -258,7 +258,7 @@
 
                 <div class="card-room-right" style="padding-left: 30px; padding-top: 20px;">
                     <span th:text="${room.getCost()}">1000</span><span>Đ/Đêm</span>
-                    <button class="btn"><a href="" style="color: white; text-decoration: none;">Đặt phòng</a></button>
+                    <button class="btn"><a th:href="@{/room-payment(room-id=${room.getId()},hotel-id=${hotel.getId()})}" style="color: white; text-decoration: none;">Đặt phòng</a></button>
                 </div>
 
             </div>

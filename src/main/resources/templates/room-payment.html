@@ -53,7 +53,27 @@
             padding: 9px;
 
         }
- 
+
+        .div-label{
+          width: 70%;
+        }
+
+        .title{
+          font-size: 30px;
+          color: rgb(30, 111, 218);
+        }
+        
+        .content1{
+          font-size: 20px;
+          margin-left: 100px;
+        }
+
+        .btn{
+          background-color: rgb(42, 116, 226);
+          color:white;
+          font-size: 30px;
+          padding: 10px;
+        }
 
     </style>
 </head>
@@ -63,7 +83,7 @@
         <br>
         <div style="display: flex;">
             <div>
-                <h3 class="header-logo">TVIEW</h3>
+              <a href="/home" style="text-decoration: none;"><h3 class="header-logo">TVIEW</h3></a>
             </div>
             <div class="header-a">
                 <a href="/hotel" class="header-a" style="text-decoration:none"><b>Khách sạn</b></a>
@@ -92,27 +112,68 @@
 
     <div style="width: 94%; margin-left: 3%;">
         <div>
-            <p>Chi tiết đơn phòng</p>
+            <p class="title">Chi tiết đơn phòng</p>
         </div>
         <div>
-            <p><span>Tên khách sạn: </span><span>XXX</span></p>
+            <p class="content1"><span>Tên khách sạn: </span><span th:text="${hotel.getName()}">XXX</span></p>
         </div>
         <div>
-            <p><span>Địa chỉ: </span><span>AXX</span></p>
+            <p class="content1"><span>Địa chỉ: </span><span th:text="${hotel.getAddress()}">AXX</span></p>
         </div>
         <div>
-            <p><span>Loại phòng: </span><span>AXX</span></p>
+            <p class="content1"><span>Loại phòng: </span><span th:text="${room.getName()}">AXX</span></p>
         </div>
         <div>
-            <p><span>Số người: </span><span>AXX</span></p>
+            <p class="content1"><span>Số người: </span><span th:text="${room.getMountOfPeople()}">AXX</span></p>
         </div>
-        <form action="">
-            <label for="">Ngày đến</label>
-            <input type="date">
-            <label for="">Ngày đi</label>
-        </form>
+        <div>
+          <p class="content1"><span>Giá phòng: </span><span th:text="${room.getCost()}">AXX</span></p>
+        </div>
     </div>
 
+    <div style="width: 94%; margin-left: 3%;">
+      <p class="title">Phương thức thanh toán</p>
+      <div style="display: flex;">
+        <div class="div-label">
+          <label class="content1">Thanh toán QR-PAY</label>
+        </div>
+        <div>
+          <input type="radio" name="pptt" id="tt1">
+        </div>
+      </div>
+      <hr>
+      <div style="display: flex;">
+        <div class="div-label">
+          <label class="content1">Thẻ ATM/Tài khoản ngân hàng</label>
+        </div>
+        <div>
+          <input type="radio" name="pptt" id="tt2">
+        </div>
+      </div>
+      <hr>
+      <div style="display: flex;">
+        <div class="div-label">
+          <label class="content1">Thẻ Visa, Master Card</label>
+        </div>
+        <div>
+          <input type="radio" name="pptt" id="tt3">
+        </div>
+      </div>
+      <hr>
+      <div style="display: flex;">
+        <div class="div-label">
+          <label class="content1">Chuyển khoản ngân hàng</label>
+        </div>
+        <div>
+          <input type="radio" name="pptt" id="tt4">
+        </div>
+      </div>
+      <hr>
+      <center><button class="btn"><a th:href="@{/add-cart-room(id=${room.getId()})}" style="text-decoration: none; color:#fff;">Thanh toán</a></button></center>
+      
+    </div>
+
+    <br><br><br><br><br>
     <footer class="footer-59391" style="background-color: rgb(132, 230, 243); margin-left: 3%; margin-right: 3%;">
       
         <div class="container">
@@ -168,5 +229,20 @@
     <script src="javascript/footer/jquery-3.3.1.min.js"></script>
     <script src="javascript/footer/popper.min.js"></script>
     <script src="javascript/footer/bootstrap.min.js"></script>
+
+
+    <script>
+      function add_cart_room(x){
+        var id = x.value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               //alert("ok"); 
+            }
+        };
+        xhttp.open("GET","/add-cart-room?id="+id, true);
+        xhttp.send();
+    }
+    </script>
 </body>
 </html>
