@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User findById(Integer id);
@@ -33,5 +35,18 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Transactional
     @Query(value ="UPDATE user SET phone = ?2 WHERE user_id=?1" , nativeQuery = true)
     void updatePhone(Integer id,  String phone);
+
+    @Query(value ="select * from user where type=?1" , nativeQuery = true)
+    List<User> queryByType(String phone);
+
+    @Modifying
+    @Transactional
+    @Query(value ="UPDATE user SET active = 0 WHERE user_id=?1" , nativeQuery = true)
+    int lock(Integer id);
+
+    @Modifying
+    @Transactional
+    @Query(value ="UPDATE user SET active = 1 WHERE user_id=?1" , nativeQuery = true)
+    int unlock(Integer id);
 
 }

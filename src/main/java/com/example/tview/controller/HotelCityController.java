@@ -22,7 +22,7 @@ public class HotelCityController {
                               @RequestParam(value = "star", required = false) Integer star) {
         ModelAndView modelAndView = new ModelAndView();
 
-        List<Hotel> hotels = hotelService.hotelRepository.findAll();
+        List<Hotel> hotels = hotelService.hotelRepository.findByActive(true);
         List<Hotel> hotels1 = new ArrayList<>();
         int amount =0;
 

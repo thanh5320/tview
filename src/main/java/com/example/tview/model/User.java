@@ -45,4 +45,8 @@ public class User {
 
     @Column(name = "img")
     private String img;
+
+    public boolean isActive(){
+        return active;
+    }
 }

@@ -29,16 +29,9 @@ public class HomeController {
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
         List<Hotel> hotelList = new ArrayList<>();
-        List<Hotel> hotels = hotelService.hotelRepository.findAll();
+        List<Hotel> hotels = hotelService.hotelRepository.findByActive(true);
         for(Hotel hotel : hotels){
-            List<EvaluateHotel> evaluateHotels =
-                    evaluateHotelService.evaluateHotelRepository.
-                            findByHotelId(hotel.getId());
-            int cnt=0;
-            for(EvaluateHotel evaluateHotel : evaluateHotels){
-                cnt +=evaluateHotel.getStar();
-            }
-            int s = (int) (cnt*1.0/evaluateHotels.size());
+            int s = hotel.getStar();
             if(s>=4){
                 hotel.setStar(s);
                 List<Room> rooms = roomService.roomRepository.findByHotelId(hotel.getId());

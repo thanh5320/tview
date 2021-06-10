@@ -31,12 +31,12 @@ public class MyUserDetailsService implements UserDetailsService {
 
     private List<GrantedAuthority> getUserAuthority(String role) {
         Set<GrantedAuthority> roles = new HashSet<>();
-        if(role=="admin")
+        if(role.equals("admin"))
             roles.add(new SimpleGrantedAuthority("admin"));
-        else if (role =="partner")
+        else if (role.equals("partner"))
             roles.add(new SimpleGrantedAuthority("partner"));
         else
-            roles.add(new SimpleGrantedAuthority("user"));
+            roles.add(new SimpleGrantedAuthority("customer"));
         return new ArrayList<>(roles);
     }
 

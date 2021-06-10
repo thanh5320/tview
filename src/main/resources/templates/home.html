@@ -117,16 +117,19 @@
     <div class="main">
         <h1 class="main-title">Khách sạn giá tốt chỉ có trên Tview</h1>
         <a href="" style="text-decoration: none;">&lt&lt Xem tất cả &gt&gt</a>
-        <div  th:each="hotel : ${hotels}">
-            <a th:href="@{/hotel-id(id=${hotel.getId()})}">
-                <div class="card">
-                    <img th:attr="src=${hotel.getAvatar()}" alt="anh" width="250px" height="200px">
-                    <p class="card-p" style="margin-top: 20px;"><b th:text="${hotel.getName()}">Tên khách sạn</b></p>
-                    <p th:text="${hotel.getCity().getName()}" class="card-p">city</p>
-                    <p th:text="${hotel.getStar()}" class="card-p">sao</p>
-                    <p th:text="${hotel.getCost()}" class="card-p" style="color: hotpink;">10000000</p>
-                </div>
+        <div style="">
+          <div th:each="hotel : ${hotels}" style="width: 250px; height: 350px; margin: 10px; display: inline-block;">
+            <a th:href="@{/hotel-id(id=${hotel.getId()})}" style="text-decoration: none;">
+              <div class="card">
+                <img th:attr="src=${hotel.getAvatar()}" style="width: 250px; height: 150px;">
+                <p class="card-p" style="margin-top: 20px;"><b th:text="${hotel.getName()}">Tên khách sạn</b></p>
+                <p th:text="${hotel.getCity().getName()}" class="card-p">city</p>
+                <p  class="card-p"><span th:text="${hotel.getStar()}"></span><span> Sao</span></p>
+                <p class="card-p" style="color: hotpink;"><span th:text="${hotel.getCost()}"></span> Đ/Đêm</p>
+              </div>
             </a>
+            
+          </div>
         </div>
     </div>
 

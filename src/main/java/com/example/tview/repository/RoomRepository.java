@@ -1,6 +1,7 @@
 package com.example.tview.repository;
 
 import com.example.tview.model.EvaluateHotel;
+import com.example.tview.model.Hotel;
 import com.example.tview.model.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -15,6 +16,10 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
     List<Room> findByHotelId(Integer HotelId);
     Room findById(Integer id);
     Room save(Room room);
+
+    List<Room> findByHotelIdAndActive(Integer HotelId, boolean b);
+
+    List<Room> findByActive(boolean active);
 
     @Modifying
     @Transactional

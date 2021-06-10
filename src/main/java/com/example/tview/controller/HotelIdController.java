@@ -29,7 +29,7 @@ public class HotelIdController {
         ModelAndView modelAndView = new ModelAndView();
         Hotel hotel = hotelService.hotelRepository.findById(id);
         modelAndView.addObject("hotel", hotel);
-        List<Room> rooms = roomService.roomRepository.findByHotelId(id);
+        List<Room> rooms = roomService.roomRepository.findByHotelIdAndActive(id, true);
         modelAndView.addObject("rooms", rooms);
         double rank=0;
         List<EvaluateHotel> evaluateHotels = evaluateHotelService.evaluateHotelRepository.findByHotelId(id);

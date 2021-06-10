@@ -16,6 +16,8 @@ public interface HotelRepository extends JpaRepository<Hotel, Long> {
 
     Hotel save(Hotel hotel);
 
+    List<Hotel> findByActive(boolean active);
+
     @Modifying
     @Transactional
     @Query(value ="UPDATE hotel SET active = 0 WHERE hotel_id=?1" , nativeQuery = true)
