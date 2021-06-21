@@ -49,4 +49,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value ="UPDATE user SET active = 1 WHERE user_id=?1" , nativeQuery = true)
     int unlock(Integer id);
 
+    @Modifying
+    @Transactional
+    @Query(value ="UPDATE user SET password=?2 WHERE user_id=?1" , nativeQuery = true)
+    int updatePass( Integer id, String pass);
+
+    @Modifying
+    @Transactional
+    @Query(value ="UPDATE user SET img=?2 WHERE user_id=?1" , nativeQuery = true)
+    int updateImg( Integer id, String img);
+
 }

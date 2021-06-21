@@ -33,8 +33,6 @@ public class Room {
     @Column(name="img4")
     private String img4;
 
-    @Column(name="approve")
-    private boolean appvore;
 
     @Column(name="cost")
     private double cost;

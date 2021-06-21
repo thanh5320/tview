@@ -63,7 +63,7 @@
           border-top-left-radius: 50%;
           border-bottom-left-radius: 50%;  
           border-bottom-right-radius: 50%;
-          margin-top: 20%;
+          margin-top: 10%;
         }
 
         .input{
@@ -84,6 +84,16 @@
           margin-left: 200px;
         }
 
+        .logout{
+          color: white;
+          background-color:rgb(52, 110, 199) ;
+          font-size: 20px;
+          padding: 3px;
+          border: none;
+          border-radius: 5px;
+          margin-top: 60px;
+        }
+
 
     </style>
 </head>
@@ -102,7 +112,7 @@
                 <a href="/tour" class="header-a" style="text-decoration:none"><b>Tour du lịch</b></a>
             </div>
             <div class="header-a">
-                <a href="/signup" class="header-a" style="text-decoration:none; margin-left: 250px;">hợp tác cùng chúng tôi</a>
+                <a href="/partner" class="header-a" style="text-decoration:none; margin-left: 250px;">hợp tác cùng chúng tôi</a>
             </div>
             <div class="header-p">
                 <p class="header-p">0967648120</p>
@@ -125,6 +135,7 @@
     <div style="background-color: rgb(22, 135, 201); padding-left: 10%; padding-top: 10px; padding-bottom: 10px;">
         <p style="color: white;">Trang chủ>>tài khoản</p>
         <p style="color: white; font-size: 40px;"><b>Tài khoản</b></p>
+        <a href="/logout" style="color: white;">Đăng xuất</a>
     </div>
 
     <div style="display: flex;  padding-left: 10%; padding-top: 20px;">
@@ -137,19 +148,22 @@
         <div style="width: 20%">
             <center><a href="/cart" style="text-decoration: none;"><p class="p-title">Giỏ hàng</p></a></center>
         </div>
-        <div style="width: 20%" th:if="${user.getType()=='partner'}">
-          <center><a href="/partner" style="text-decoration: none;"><p class="p-title">Quản lý khách sạn</p></a></center>
+        <div style="width: 20%">
+          <center><a href="/change-password" style="text-decoration: none;"><p class="p-title">Đổi mật khẩu</p></a></center>
       </div>
     </div>
 
+    <form th:action="@{/user}"
+            th:object="${user}" method="post" enctype="multipart/form-data">
     <div style="display: flex; margin-left:3%; background-color: rgb(241, 238, 233); width: 94%;">
-        <div style="width: 20%;">
+      
+        <div style="width: 30%;">
           <center><img th:attr="src=${user.getImg()}" class="img-tron" alt="" width="150px" height="150px"></center>    
+          <center><input type="file" th:field="*{fileImg}" title=" "/></center>
+          
         </div>
         <div>
-            <form autocomplete="off" action="#" th:action="@{/user}"
-            th:object="${user}" method="post"
-            role="form">
+            
                 <label >Họ tên</label>
                 <br>
                 <input class="input" th:field="*{name}" type="text">
@@ -168,11 +182,11 @@
                 <input class="input" th:field="*{phone}" type="text">
                 <br><br>
                 <input class="btn-update" type="submit" value="Cập nhật">
-            </form>
+            
         </div>
-
+      
     </div>
-
+    </form>
     <br><br><br><br>
 
     <footer class="footer-59391" style="background-color: rgb(132, 230, 243); margin-left: 3%; margin-right: 3%;">
@@ -222,7 +236,6 @@
               </div>
             </div>
           </div>
-        
       </div>
     </footer>
 

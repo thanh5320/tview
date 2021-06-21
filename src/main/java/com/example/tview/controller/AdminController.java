@@ -24,6 +24,13 @@ public class AdminController {
     @Autowired
     private NotificationService notificationService;
 
+    @GetMapping(value = "/admin")
+    public ModelAndView admin(){
+        ModelAndView modelAndView =  new ModelAndView();
+        modelAndView.setViewName("admin");
+        return modelAndView;
+    }
+
     @GetMapping(value = "/admin/account/partner")
     public ModelAndView partner(){
         ModelAndView modelAndView = new ModelAndView();

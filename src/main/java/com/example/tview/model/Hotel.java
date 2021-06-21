@@ -42,9 +42,6 @@ public class Hotel {
     @Column(name="img4")
     private String img4;
 
-    @Column(name="approve")
-    private boolean approve;
-
     @Column(name="active")
     private boolean active;
 

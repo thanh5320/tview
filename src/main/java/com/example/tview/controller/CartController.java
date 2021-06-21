@@ -65,7 +65,21 @@ public class CartController {
             evaluateHotel.setStar(st);
             evaluateHotel.setHotel(cartRoom.getRoom().getHotel());
             evaluateHotel.setUser(cartRoom.getUser());
-            evaluateHotel.setTitle("Tốt");
+            if(st==1){
+                evaluateHotel.setTitle("Kém");
+            }
+            else if(st==2){
+                evaluateHotel.setTitle("Trung bình");
+            }
+            else if(st==3){
+                evaluateHotel.setTitle("Tốt");
+            }else if(st==4){
+                evaluateHotel.setTitle("Xuất sắc");
+            }else if(st==5){
+                evaluateHotel.setTitle("Tuyệt vời");
+            }
+
+
             evaluateHotel = evaluateHotelService.evaluateHotelRepository.save(evaluateHotel);
             cartRoomService.cartRoomRepository.updateIdEva(cartRoom.getId(), evaluateHotel.getId());
         }else{

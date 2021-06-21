@@ -35,10 +35,11 @@ public class HomeController {
             if(s>=4){
                 hotel.setStar(s);
                 List<Room> rooms = roomService.roomRepository.findByHotelId(hotel.getId());
-                int cost=0;
+                int cost=100000000;
                 for(Room room : rooms){
                     cost=cost<(int)room.getCost() ? cost:(int)room.getCost();
                 }
+                if(cost==100000000) cost = 1000000;
                 hotel.setCost(cost);
                 hotelList.add(hotel);
             }
